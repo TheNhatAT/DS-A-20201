@@ -40,7 +40,7 @@ void BubbleSort(int a[], int size) {
 		if (sorted == 1) {
 			sorted = 0;
 			for (int j = 0; j < size - i - 1; j++) {
-				if (a[j] > a[j + 1]) {
+				if (a[j] > a[j + 1]) { // chuyển về phần sorted ở cuối
 					swap(&a[j], &a[j + 1]);
 					sorted = 1;
 				}
