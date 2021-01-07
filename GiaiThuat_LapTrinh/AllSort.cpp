@@ -28,7 +28,7 @@ void SelectionSort(int a[], int size) {
 		for (int j = i + 1; j < size; j++) {
 			if (a[j] < a[index_min]) index_min = j;
 		}
-		//đổi chỗ phần từ nhỏ nhất vừa tìm được về vị trí thứ i
+		// đổi chỗ phần từ nhỏ nhất vừa tìm được về vị trí thứ i
 		swap(&a[i], &a[index_min]);
 	}
 }
@@ -81,7 +81,6 @@ void MergeSort(int a[], int front, int end) {
 		MergeSort(a, front, mid);
 		MergeSort(a, mid + 1, end);
 		Merge1(a, front, mid, end);
-		//Merge2(a, front, mid, end);
 	}
 }
 

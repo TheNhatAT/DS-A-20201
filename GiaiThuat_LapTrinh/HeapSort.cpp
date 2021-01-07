@@ -88,7 +88,7 @@ int main() {
 	}
 	printf("\n");
 	HeapIncreaseKey(A, 5, 19, 10);
-	HeapSort(A, 10);
+	HeapSort(A, 1088);
 	for (int i = 1; i <= 10; i++) {
 		printf("%d ", A[i]);
 	}

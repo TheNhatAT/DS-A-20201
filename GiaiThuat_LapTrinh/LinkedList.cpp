@@ -12,7 +12,7 @@ node* head = NULL;
 
 int sizeList();
 node* makeNewNode(int data);
-void InsertToHead(int data);
+void InsertToHead(int data); 
 void InsertAt(int data, int at);
 void TraverseList();
 void InsertToLast(int data);
