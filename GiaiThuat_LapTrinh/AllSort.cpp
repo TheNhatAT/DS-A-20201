@@ -54,7 +54,7 @@ void Merge1(int a[], int front, int mid, int end) {
     int n2 = end  - mid;
 	int* left = (int*)malloc((n1 + 1) * sizeof(int));
 	int* right = (int*)malloc((n2 + 1) * sizeof(int));
-
+	
 	for (int i = 0; i < n1; i++) {
 		left[i] = a[front + i];
 	}
