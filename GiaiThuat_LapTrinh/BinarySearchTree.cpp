@@ -135,12 +135,13 @@ void t1(treeNode* x) {
 }
 int countNodes(treeNode* x, int k) {
 	if (x == NULL) return 0;
-	else if (x->key > k) return countNodes(x->left, k) + countNodes(x->right, k) + 1;
+	else if (x->key % 2 == 0) return countNodes(x->left, k) + countNodes(x->right, k) + 1;
 	else {
-		countNodes(x->left, k);
-		countNodes(x->right, k);
+		 countNodes(x->left, k);
+	     countNodes(x->right, k);
 	}
 }
+//count the total of even number in leaves nodes
 int evenLeafs(treeNode* x) {
 	if (x == NULL) return 0;
 	else if (x->left != NULL || x->right != NULL) {
@@ -148,6 +149,12 @@ int evenLeafs(treeNode* x) {
 	}
 	else if (x->key % 2 == 0) return 1;
 	else return 0;
+}
+//Sum of all nodes in a binary tree 
+//The idea: call left subtree sum, right subtree sum and add their values to current node’s data.
+int sumTree(treeNode* x) {
+	if (x == NULL) return 0;
+	else return root->key + sumTree(x->left) + sumTree(x->right);
 }
 int main() {
 	root = Insert(6, root);
@@ -158,8 +165,9 @@ int main() {
 	root = Insert(7, root);
 	root = Insert(10, root);
 
+	cout << sumTree(root);
 	//evenLeafs(root);
-	cout << evenLeafs(root);
+	//cout << evenLeafs(root);
 	//cout << countNodes(root, 7);
 	/*cout << countNodes(root, 5);
 	/*InorderPrint(root);
