@@ -125,24 +125,52 @@ void InorderPrint(treeNode* root) {
 	cout << root->key << " ";
 	InorderPrint(root->right);
 }
+void t1(treeNode* x) {
+	if (x != NULL) {
+		cout << x->key << " ";
+		t1(x->left);
+		t1(x->right);
+		cout << x->key << " ";
+	}
+}
+int countNodes(treeNode* x, int k) {
+	if (x == NULL) return 0;
+	else if (x->key > k) return countNodes(x->left, k) + countNodes(x->right, k) + 1;
+	else {
+		countNodes(x->left, k);
+		countNodes(x->right, k);
+	}
+}
+int evenLeafs(treeNode* x) {
+	if (x == NULL) return 0;
+	else if (x->left != NULL || x->right != NULL) {
+		return evenLeafs(x->left) + evenLeafs(x->right);
+	}
+	else if (x->key % 2 == 0) return 1;
+	else return 0;
+}
 int main() {
-	root = Insert(10, root);
-	root = Insert(23, root);
+	root = Insert(6, root);
+	root = Insert(3, root);
+	root = Insert(1, root);
+	root = Insert(4, root);
 	root = Insert(8, root);
 	root = Insert(7, root);
-	root = Insert(43, root);
-	root = Insert(34, root);
-	root = Insert(14, root);
-	root = Insert(56, root);
-	root = Insert(44, root);
-	root = Insert(33, root);
+	root = Insert(10, root);
 
-	InorderPrint(root);
+	//evenLeafs(root);
+	cout << evenLeafs(root);
+	//cout << countNodes(root, 7);
+	/*cout << countNodes(root, 5);
+	/*InorderPrint(root);
+	cout << endl;
+	t1(root);
+	/*InorderPrint(root);
 	cout << endl << findMax(root)->key << endl;
 	cout << findMin(root)->key << endl;
 	cout << search(14, root) << " " << search(14, root)->key << endl;
 	cout << predecessor(search(14, root))->key << "---" << successor(search(14, root))->key << endl;
 	root = Delete(33, root);
-	InorderPrint(root);
+	InorderPrint(root);*/
 	return 0;
 }
