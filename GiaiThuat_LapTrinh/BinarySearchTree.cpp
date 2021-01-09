@@ -31,7 +31,7 @@ treeNode* create_node(int newKey) {
 	}
 	else
 	{
-		newNode->key = newKey; ///sdsds
+		newNode->key = newKey;
 		newNode->left = NULL;
 		newNode->right = NULL;
 		newNode->parent = NULL;
@@ -53,6 +53,10 @@ treeNode* maxOdd(treeNode* root) {
 	}
 	else if (root->left != NULL) {
 		return maxOdd(root->left);
+	}
+	else {
+		if (root->key % 2 == 1) return root;
+		else return NULL;
 	}
 }
 //check BST
@@ -176,14 +180,13 @@ int sumTree(treeNode* x) {
 	else return root->key + sumTree(x->left) + sumTree(x->right);
 }
 int main() {
-	root = Insert(5, root);
 	root = Insert(3, root);
-	root = Insert(1, root);
-	root = Insert(4, root);
-	root = Insert(8, root);
+	root = Insert(2, root);
+	root = Insert(6, root);
 	root = Insert(7, root);
-	root = Insert(10, root);
-	 
+	root = Insert(4, root);
+	root = Insert(9, root);
+
 	cout << maxOdd(root)->key;
 	//cout << sumTree(root);
 	//cout << isBST(root);
