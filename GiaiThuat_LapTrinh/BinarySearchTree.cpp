@@ -44,6 +44,9 @@ treeNode* search(int target, treeNode* root) {
 	else return search(target, root->right);
 
 }
+treeNode* maxOdd(treeNode* root) {
+	
+}
 treeNode* findMin(treeNode* root) {
 	if (root == NULL) return NULL;
 	else {
