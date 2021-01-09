@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <algorithm>
+#include <queue>
 
 using namespace std;
 
@@ -44,8 +45,23 @@ treeNode* search(int target, treeNode* root) {
 	else return search(target, root->right);
 
 }
+// find at the right subtree first, if can't fine then find the left subtree
 treeNode* maxOdd(treeNode* root) {
-	
+	if (root == NULL) return NULL;
+    if (root->right != NULL && maxOdd(root->right)->key % 2 == 1) {
+		return maxOdd(root->right);
+	}
+	else if (root->left != NULL) {
+		return maxOdd(root->left);
+	}
+}
+//check BST
+bool isBST(treeNode* root) {
+	if (root == NULL) return true;
+	else if (root->right != NULL && root->right->key < root->key) return false;
+	else if (root->left != NULL && root->left->key > root->key) return false;
+	else if (!isBST(root->left) || !isBST(root->right)) return false;
+	return true;
 }
 treeNode* findMin(treeNode* root) {
 	if (root == NULL) return NULL;
@@ -160,15 +176,17 @@ int sumTree(treeNode* x) {
 	else return root->key + sumTree(x->left) + sumTree(x->right);
 }
 int main() {
-	root = Insert(6, root);
+	root = Insert(5, root);
 	root = Insert(3, root);
 	root = Insert(1, root);
 	root = Insert(4, root);
 	root = Insert(8, root);
 	root = Insert(7, root);
 	root = Insert(10, root);
-
-	cout << sumTree(root);
+	 
+	cout << maxOdd(root)->key;
+	//cout << sumTree(root);
+	//cout << isBST(root);
 	//evenLeafs(root);
 	//cout << evenLeafs(root);
 	//cout << countNodes(root, 7);
