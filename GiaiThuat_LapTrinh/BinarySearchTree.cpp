@@ -59,6 +59,30 @@ treeNode* maxOdd(treeNode* root) {
 		else return NULL;
 	}
 }
+int Count(treeNode* root) {
+	if (root == NULL) return 0;
+	else return 1 + Count(root->left) + Count(root->right);
+}
+// count node that has 2 child
+int CountFullNode(treeNode* root) {
+	if (root == NULL) return 0;
+	else if (root->left != NULL && root->right != NULL) return 1 + CountFullNode(root->left) + CountFullNode(root->right);
+	else {
+		CountFullNode(root->left);
+		CountFullNode(root->right);
+	}
+}
+// don't complete
+treeNode* FindKthInOrder(treeNode* x, int k) {
+	if (k > Count(root)) return NULL;
+	else if (x->key < root->key && k == Count(x)) return x;
+	//else if (x->key > root->key && k == )
+	else if (k <= Count(root->left)) return FindKthInOrder(x->left, k);
+	else if (k > Count(root->left)) return FindKthInOrder(x->right, k);
+	else {
+		return NULL;
+	}
+}
 //check BST
 bool isBST(treeNode* root) {
 	if (root == NULL) return true;
@@ -180,14 +204,20 @@ int sumTree(treeNode* x) {
 	else return root->key + sumTree(x->left) + sumTree(x->right);
 }
 int main() {
-	root = Insert(3, root);
-	root = Insert(2, root);
-	root = Insert(6, root);
-	root = Insert(7, root);
-	root = Insert(4, root);
-	root = Insert(9, root);
+	root = Insert(31, root);
+	root = Insert(19, root);
+	root = Insert(24, root);
+	root = Insert(12, root);
+	root = Insert(17, root);
+	root = Insert(25, root);
+	root = Insert(35, root);
+	root = Insert(37, root);
+	root = Insert(14, root);
+	root = Insert(18, root);
 
-	cout << maxOdd(root)->key;
+	cout << CountFullNode(root);
+	//cout << FindKthInOrder(root, 3)->key;
+	//cout << maxOdd(root)->key;
 	//cout << sumTree(root);
 	//cout << isBST(root);
 	//evenLeafs(root);
