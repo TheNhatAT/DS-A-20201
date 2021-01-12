@@ -12,11 +12,11 @@ void InsertionSort(int a[], int size) {
 	for (int i = 1; i < size; i++) {
 		int temp = a[i];
 		int pos = i;
-		while (i > 0 && a[i - 1] > temp) {
-			a[i] = a[i - 1];	// bước lặp k: liên tục đổi chỗ phần tử thứ k và phần tử kề bên trái nó nếu phần tử k còn nhỏ hơn phần tử đó
-			i--;
+		while (pos > 0 && a[pos - 1] > temp) {
+			a[pos] = a[pos - 1];	// bước lặp k: liên tục đổi chỗ phần tử thứ k và phần tử kề bên trái nó nếu phần tử k còn nhỏ hơn phần tử đó
+			pos--;
 		}
-		a[i] = temp;
+		a[pos] = temp;
 	}
 }
 
