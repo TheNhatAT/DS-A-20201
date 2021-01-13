@@ -215,7 +215,7 @@ int main() {
 	root = Insert(14, root);
 	root = Insert(18, root);
 
-	cout << CountFullNode(root);
+	cout <<2/3;
 	//cout << FindKthInOrder(root, 3)->key;
 	//cout << maxOdd(root)->key;
 	//cout << sumTree(root);
